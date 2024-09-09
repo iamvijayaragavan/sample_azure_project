@@ -12,15 +12,25 @@ az storage account create --name testpocsa --resource-group pocterraform --locat
 az storage container create --name terraformstatefiles --account-name mystorageaccount
 
 
-#Initilize terraform
+# Initilize terraform
 cd dev/
 terraform init
 
-#Validate the terrafor script
+# Validate the terrafor script
 terraform validate
 
-#Verifiy the changes using terraform plan
+# Verifiy the changes using terraform plan
 terraform plan
 
-#Apply the infra changes below command
+# Apply the infra changes below command
 terraform apply
+
+
+
+
+# NOTE: You need to create Service priciple and replace those values in terraform.tfvars file
+
+# Service Principle creation 
+
+az ad sp create-for-rbac --name testAKSServicePrincipal --role Contributor --scopes /subscriptions/{subscription-id}/resourceGroups/testpocrg
+

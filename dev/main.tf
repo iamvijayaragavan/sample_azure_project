@@ -1,12 +1,12 @@
 module "resource_group" {
-  source  = "./modules/resource_group"
+  source  = "../modules/rg"
   name    = var.resource_group_name
   location = var.resource_group_location
   tags    = var.tags
 }
 
 module "vnet" {
-  source              = "./modules/vnet"
+  source              = "../modules/vnet"
   name                = var.vnet_name
   location            = var.vnet_location
   resource_group_name = module.resource_group.resource_group_name
@@ -17,7 +17,7 @@ module "vnet" {
 }
 
 module "acr" {
-  source              = "./modules/acr"
+  source              = "../modules/acr"
   name                = var.acr_name
   resource_group_name = module.resource_group.resource_group_name
   location            = var.vnet_location
@@ -26,7 +26,7 @@ module "acr" {
 }
 
 module "aks" {
-  source                          = "./modules/aks"
+  source                          = "../modules/aks"
   name                            = var.aks_name
   location                        = var.aks_location
   resource_group_name             = modu
